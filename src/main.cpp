@@ -22,9 +22,11 @@ main(int argc, char *argv[])
   using namespace Logic_core;
   using namespace Logic;
 
-  int t = std::time(0);
-  TerminalIO *tio = new TerminalIO();
-  Game game = Game(t, tio);
-  while (game.start());
+  bool restart = true;
+  while (restart)
+  {
+    Game game = Game(std::time(0), new TerminalIO());
+    restart = game.start();
+  }
   return 0;
 }
